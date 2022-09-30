@@ -71,6 +71,8 @@ add_compile_options(
     $<$<COMPILE_LANGUAGE:C,CXX>:-g>
     $<$<AND:$<COMPILE_LANGUAGE:C>,$<BOOL:${TFM_DEBUG_OPTIMISATION}>,$<CONFIG:Debug>>:-Og>
     $<$<AND:$<COMPILE_LANGUAGE:C>,$<BOOL:${CONFIG_TFM_WARNINGS_ARE_ERRORS}>>:-Werror>
+    # Force DWARF version 4 for zephyr as pyelftools does not support version 5 at present
+    -gdwarf-4
 )
 
 # Pointer Authentication Code and Branch Target Identification (PACBTI) Options
