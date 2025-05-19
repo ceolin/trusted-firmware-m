@@ -37,6 +37,7 @@ target_compile_options(bl1_1
 target_sources(bl1_1
     PRIVATE
         main.c
+        $<$<BOOL:${CONFIG_PICOLIBC}>:${CMAKE_SOURCE_DIR}/platform/ext/common/picolibc.c>
         $<$<BOOL:${CONFIG_GNU_SYSCALL_STUB_ENABLED}>:${CMAKE_SOURCE_DIR}/platform/ext/common/syscalls_stub.c>
         ${CMAKE_SOURCE_DIR}/secure_fw/partitions/lib/runtime/crt_memcmp.c
         ${CMAKE_SOURCE_DIR}/secure_fw/shared/crt_memset.c

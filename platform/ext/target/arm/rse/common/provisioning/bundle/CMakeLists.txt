@@ -95,6 +95,7 @@ function(create_provisioning_code_target target linker_script entry_point
 
     target_sources(${TARGET_NAME}
         PRIVATE
+            $<$<BOOL:${CONFIG_PICOLIBC}>:${CMAKE_SOURCE_DIR}/platform/ext/common/picolibc.c>
             $<$<BOOL:${CONFIG_GNU_SYSCALL_STUB_ENABLED}>:${CMAKE_SOURCE_DIR}/platform/ext/common/syscalls_stub.c>
     )
 
